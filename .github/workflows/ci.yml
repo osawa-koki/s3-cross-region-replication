@@ -1,0 +1,21 @@
+name: ci
+
+on: [ push ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Configure AWS credentials
+      id: creds
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+    - name: Validate CloudFormation template
+      run: aws cloudformation validate-template --template-body file://template.yml
+      env:
+        AWS_EC2_METADATA_DISABLED: true
