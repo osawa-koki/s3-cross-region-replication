@@ -16,4 +16,4 @@ jobs:
     - name: Validate CloudFormation template
       run: aws cloudformation validate-template --template-body file://template.yml
       env:
-        AWS_EC2_METADATA_DISABLED
+        AWS_EC2_METADATA_DISABLED: true
