@@ -50,8 +50,8 @@ Default output format [None]: json
 # Ref: https://docs.aws.amazon.com/ja_jp/AWSCloudFormation/latest/UserGuide/using-cfn-cli-creating-stack.html
 aws cloudformation deploy \
     --stack-name <stack-name> \
-    --template <template> \
-    --parameter-overrides <parameter-overrides>
+    --capabilities CAPABILITY_NAMED_IAM \
+    --template <template>
 
 # 例)
 aws cloudformation deploy \
